@@ -9,6 +9,7 @@ namespace HeroApi
         public AutoMapperProfile()
         {
             CreateMap<CharacterDTO, Character>().ReverseMap();
+            CreateMap<UserDTO, User>().ReverseMap();
         }
     }
 }

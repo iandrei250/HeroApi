@@ -1,4 +1,6 @@
-﻿using HeroApi.Models;
+﻿using AutoMapper;
+using HeroApi.Models;
+using HeroApi.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,10 +11,12 @@ namespace HeroApi.Controllers
     public class CharacterController : Controller
     {
         private readonly DataContext _dataContext;
+        private readonly IMapper _mapper;
 
-        public CharacterController(DataContext dataContext)
+        public CharacterController(DataContext dataContext, IMapper mapper)
         {
             _dataContext = dataContext;
+            _mapper = mapper;
         }
        
         [HttpGet("{id}")]
@@ -25,6 +29,17 @@ namespace HeroApi.Controllers
             return Ok(character);
         }
 
+        [HttpPost]
+        [Route("search")]
+        public async Task<IActionResult> GetName([FromBody]string name)
+        {
+            var character = await _dataContext.Characters.Where(c => c.Name == name).FirstOrDefaultAsync();
+
+            if (character == null) return NotFound(name);
+
+            return Ok(character);
+        }
+
         
         [HttpPost]
         public async Task<IActionResult> Post(Character character)
@@ -33,27 +48,21 @@ namespace HeroApi.Controllers
             _dataContext.Characters.Add(character);
 
             await _dataContext.SaveChangesAsync();
-            return Ok(await _dataContext.Characters.ToListAsync());
+            return Created(new Uri(Request.Host + Request.Path+character.Id), character);
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(Character character)
+        public async Task<IActionResult> Put(CharacterDTO character)
         {
-            var _character = await _dataContext.Characters.FindAsync(character.Id);
+            var _characterInDb = await _dataContext.Characters.FindAsync(character.Id);
 
-            if (_character == null) return NotFound(character.Id);
+            if (_characterInDb == null) return NotFound(character.Id);
 
-            _character.Name = character.Name;
-            _character.Surname = character.Surname;
-            _character.Age = character.Age;
-            _character.Height = character.Height;
-            _character.Weight = character.Weight;
-            _character.Background = character.Background;
-            _character.Ability_Description = character.Ability_Description;
+            _mapper.Map(character, _characterInDb);
 
             await _dataContext.SaveChangesAsync();
 
-            return Ok(_character);
+            return Ok(_characterInDb);
         }
 
         [HttpDelete]
