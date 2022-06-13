@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "On/9z0KRUPcgAQX9LPPWSFJ6yMgRwETkXJMMbGlC8RHtJb5kBDgOVaZmdTtLCLgQsMZkKmDFCTFlEYnudj7edA==",
+  "dgSpecHash": "f1xFqX8KGdHuyWfWk9hk4kBh1I5WdTyQWU4ePqE5YYGvcaKOhFSJYjpTvhvKh0yZnV61pL5FnEXl1gzrLKm5Qw==",
   "success": true,
   "projectFilePath": "D:\\Proiecte\\HeroCreaterApp\\HeroApi\\HeroApi\\HeroApi\\HeroApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Andrei Iordache\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Andrei Iordache\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\Andrei Iordache\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Andrei Iordache\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Andrei Iordache\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Andrei Iordache\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\Andrei Iordache\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.5\\microsoft.entityframeworkcore.6.0.5.nupkg.sha512",
